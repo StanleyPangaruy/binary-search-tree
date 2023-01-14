@@ -42,7 +42,7 @@ class BinarySearchTreeNode:
             elements += self.right.inOrderTraversal()
 
         return elements
-        
+
     def postOrderTraversal(self):
         elements = []
         
@@ -53,6 +53,30 @@ class BinarySearchTreeNode:
             elements += self.right.postOrderTraversal()
 
         elements.append(self.data)
+
+        return elements
+
+    def postOrderTraversal(self):
+        elements = []
+        
+        if self.left:
+            elements += self.left.postOrderTraversal()
+
+        if self.right:
+            elements += self.right.postOrderTraversal()
+
+        elements.append(self.data)
+
+        return elements
+
+    def preOrderTraversal(self):
+        elements = [self.data]
+        
+        if self.left:
+            elements += self.left.preOrderTraversal()
+
+        if self.right:
+            elements += self.right.preOrderTraversal()
 
         return elements
 
@@ -104,6 +128,7 @@ if __name__ == '__main__':
     print("Is there a letter Z on my name?", lettersTree.search('Z'))
     print('In order traversal gives this sorted list: ' ,lettersTree.inOrderTraversal())
     print('In post order traversal gives this sorted list: ' ,lettersTree.postOrderTraversal())
+    print('In pre order traversal gives this sorted list: ' ,lettersTree.preOrderTraversal())
     print('Min: ',lettersTree.findMin())
     print('Max: ',lettersTree.findMax())
     print('Sum: ', numbersTree.calculateSum())
