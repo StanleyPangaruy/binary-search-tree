@@ -43,6 +43,22 @@ class BinarySearchTreeNode:
 
         return elements
 
+    def search(self, val):
+        if self.data == val:
+            return True
+        
+        if val < self.data:
+            if self.left:
+                self.left.search(val)
+            else:
+                return False
+
+        if val > self.data:
+            if self.right:
+                self.right.search(val)
+            else:
+                return False
+
 def buildTree(elements):
     root = BinarySearchTreeNode(elements[8])
 
@@ -52,6 +68,6 @@ def buildTree(elements):
     return root
 
 if __name__ == '__main__':
-    numbers = [19, 20, 1, 14, 12, 5, 25, 10, 15, 8, 9, 22, 18, 16, 7, 21]
+    numbers = ['S', 'T', 'A', 'N', 'L', 'E', 'Y', 'J', 'O', 'H', 'I', 'V', 'R', 'P', 'G', 'U']
     numbersTree = buildTree(numbers)
-    print(numbersTree.inOrderTraversal())
+    print(numbersTree.search('O'))
