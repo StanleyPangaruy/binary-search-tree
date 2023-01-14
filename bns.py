@@ -70,6 +70,11 @@ class BinarySearchTreeNode:
             return self.data
         return self.right.findMax()
 
+    def calculateSum(self):
+        leftSum = self.left.calculateSum() if self.left else 0
+        rightSum = self.right.calculateSum() if self.right else 0
+        return self.data + leftSum + rightSum
+
 def buildTree(elements):
     root = BinarySearchTreeNode(elements[0])
 
@@ -88,3 +93,4 @@ if __name__ == '__main__':
     print('In order traversal gives this sorted list: ' ,lettersTree.inOrderTraversal())
     print('Min: ',lettersTree.findMin())
     print('Max: ',lettersTree.findMax())
+    print('Sum: ', numbersTree.calculateSum())
