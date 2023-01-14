@@ -49,18 +49,18 @@ class BinarySearchTreeNode:
         
         if val < self.data:
             if self.left:
-                self.left.search(val)
+                return self.left.search(val)
             else:
                 return False
 
         if val > self.data:
             if self.right:
-                self.right.search(val)
+                return self.right.search(val)
             else:
                 return False
 
 def buildTree(elements):
-    root = BinarySearchTreeNode(elements[8])
+    root = BinarySearchTreeNode(elements[0])
 
     for i in range(1,len(elements)):
         root.addChild(elements[i])
@@ -68,6 +68,9 @@ def buildTree(elements):
     return root
 
 if __name__ == '__main__':
-    numbers = ['S', 'T', 'A', 'N', 'L', 'E', 'Y', 'J', 'O', 'H', 'I', 'V', 'R', 'P', 'G', 'U']
-    numbersTree = buildTree(numbers)
-    print(numbersTree.search('O'))
+    nameLetters = ['S', 'T', 'A', 'N', 'L', 'E', 'Y', 'J', 'O', 'H', 'I', 'V', 'R', 'P', 'G', 'U']
+    lettersTree = buildTree(nameLetters)
+    print("Is there a letter T on my name?", lettersTree.search('T'))
+    print("Is there a letter J on my name?", lettersTree.search('J'))
+    print("Is there a letter Z on my name?", lettersTree.search('Z'))
+    print(lettersTree.inOrderTraversal())
