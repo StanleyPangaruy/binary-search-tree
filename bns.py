@@ -30,18 +30,19 @@ class BinarySearchTreeNode:
     def inOrderTraversal(self):
         elements = []
 
-        # traverse left tree
+        #recur left tree
         if self.left:
             elements += self.left.inOrderTraversal()
 
-        #traverse base node
+        #recur base node
         elements.append(self.data)
 
-        #traverse right tree
+        #recur right tree
         if self.right:
             elements += self.right.inOrderTraversal()
 
         return elements
+
 
     def search(self, val):
         if self.data == val:
@@ -58,6 +59,16 @@ class BinarySearchTreeNode:
                 return self.right.search(val)
             else:
                 return False
+    
+    def findMin(self):
+        if  self.left is None:
+            return self.data
+        return self.left.findMin()
+
+    def findMax(self):
+        if  self.right is None:
+            return self.data
+        return self.right.findMax()
 
 def buildTree(elements):
     root = BinarySearchTreeNode(elements[0])
@@ -69,8 +80,11 @@ def buildTree(elements):
 
 if __name__ == '__main__':
     nameLetters = ['S', 'T', 'A', 'N', 'L', 'E', 'Y', 'J', 'O', 'H', 'I', 'V', 'R', 'P', 'G', 'U']
+    numbers = [19, 29, 1, 14, 12, 5, 25, 10, 15, 8, 9, 22, 18, 16, 7, 21,]
     lettersTree = buildTree(nameLetters)
+    numbersTree = buildTree(numbers)
     print("Is there a letter T on my name?", lettersTree.search('T'))
-    print("Is there a letter J on my name?", lettersTree.search('J'))
     print("Is there a letter Z on my name?", lettersTree.search('Z'))
-    print(lettersTree.inOrderTraversal())
+    print('In order traversal gives this sorted list: ' ,lettersTree.inOrderTraversal())
+    print('Min: ',lettersTree.findMin())
+    print('Max: ',lettersTree.findMax())
